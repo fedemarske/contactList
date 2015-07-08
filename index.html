@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Contact List</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap -->
+    <link href="lib/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Material -->
+    <link href="lib/css/roboto.min.css" rel="stylesheet">
+    <link href="lib/css/material.min.css" rel="stylesheet">
+    <link href="lib/css/ripples.min.css" rel="stylesheet">
+</head>
+
+<body ng-app="contacts">
+    <div class="container" ng-controller="contactsController">
+        <div class="jumbotron">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <div class="row clearfix">
+                        <div class="col-md-4 column">
+                            <div class="list-group" style="overflow:auto;height:600px;">
+                                <div class="list-group-item" ng-repeat="contact in contacts" style="cursor:pointer" ng-click="showDetails(contact)">
+                                    <div class="row-picture">
+                                        <img class="circle" ng-src="{{contact.smallImageURL}}" alt="icon">
+                                    </div>
+                                    <div class="row-content">
+                                        <h4 class="list-group-item-heading">{{contact.name}}</h4>
+                                        <p class="list-group-item-text">{{contact.phone.home}}</p>
+                                    </div>
+                                </div>
+                                <div class="list-group-separator"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-8 column">
+                            <div class="row clearfix">
+                                <div class="col-md-12 column" ng-if="contact != null">
+                                    <div class="row clearfix">
+                                        <div class="col-md-3 column">
+                                            <img ng-src="{{contact.moreInfo.largeImageURL}}">
+                                        </div>
+                                        <div class="col-md-9 column">
+                                            <h3>{{contact.name}}</h3>
+                                            <br>
+                                            <h4>Company:</h4><strong>{{contact.company}}</strong>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-md-12 column">
+                                            <h4>Phone:</h4>
+                                            <strong>{{contact.phone.home}}</strong>
+                                            <strong style="float:right; margin-right: 20%;">Home</strong>
+                                            <br>
+                                            <strong>{{contact.phone.work}}</strong>
+                                            <strong style="float:right; margin-right: 20%;">Work</strong>
+                                            <br>
+                                            <div ng-if="contact.phone.mobile.length">
+                                                <strong>{{contact.phone.mobile}}</strong>
+                                                <strong style="float:right; margin-right: 20%;">Mobile</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-md-12 column">
+                                            <h4>Adress:</h4>
+                                            <strong>{{contact.moreInfo.address.street}}</strong>
+                                            <br>
+                                            <strong>{{contact.moreInfo.address.city}}, {{contact.moreInfo.address.state}} {{contact.moreInfo.address.zip}}</strong>
+                                            <br>
+                                            <strong>{{contact.moreInfo.address.country}}</strong>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-md-12 column">
+                                            <h4>Birthday:</h4>
+                                            <strong>{{contact.birthday.month}} {{contact.birthday.day}}, {{contact.birthday.year}}</strong>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-md-12 column">
+                                            <h4>Email:</h4>
+                                            <strong>{{contact.moreInfo.email}}</strong>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-md-12 column">
+                                            <h4>Website:</h4>
+                                            <strong>{{contact.moreInfo.website}}</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- Jquery -->
+<script src="lib/js/jquery.min.js"></script>
+<!-- Angular -->
+<script src="lib/js/angular.min.js"></script>
+<!-- Bootstrap Material -->
+<script src="lib/js/material.min.js"></script>
+<script src="lib/js/ripples.min.js"></script>
+<!-- App -->
+<script src="app/app.js"></script>
+<script src="app/controllers/contactsController.js"></script>
+<script src="app/services/contactsService.js"></script>
+
+</html>
